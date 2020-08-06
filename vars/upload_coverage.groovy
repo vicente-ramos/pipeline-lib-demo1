@@ -4,8 +4,7 @@ import groovy.json.*
 
 def call(String token, String language, String file) {
 	String url = "https://api.codacy.com/2.0/coverage"
-	//def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
-	def commit = '91dba5606fe316d1fa211f3ca973b67d7b5fd00f'
+	def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
 	// def commit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 
 	def cover_file = JsonOutput.toJson(file)
