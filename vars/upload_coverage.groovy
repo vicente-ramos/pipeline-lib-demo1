@@ -11,7 +11,8 @@ def call(String token, String language, String file) {
 	def cover_file = JsonOutput.toJson(file)
 	url = url + "/" + commit + "/" + language
 
-	post = url.openConnection()
+	echo "The url is ${url}"
+	post = new URL(url).openConnection()
 	post.setRequestMethod("POST")
 	post.setRequestProperty("project_token", token)
 	post.setRequestProperty("Content-Type", "application/json")
