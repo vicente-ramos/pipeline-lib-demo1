@@ -15,12 +15,12 @@ def call(String token, String language, String file) {
 	URL new_url = new URL(url)
 	HttpURLConnection post = (HttpURLConnection) new_url.openConnection();
 	// .openConnection();
-	// post.setRequestMethod("POST")
-	// post.setDoOutput(true)
-	// post.setRequestProperty("project_token", token)
-	// post.setRequestProperty("Content-Type", "application/json")
+	post.setRequestMethod("POST")
+	post.setDoOutput(true)
+	post.setRequestProperty("project_token", token)
+	post.setRequestProperty("Content-Type", "application/json")
 
 
-	// post.getOutputStream().write(cover_file.getBytes("UTF-8"));
-	// return post.getResponseCode();
+	post.getOutputStream().write(cover_file.getBytes("UTF-8"));
+	return post.getResponseCode();
 }
