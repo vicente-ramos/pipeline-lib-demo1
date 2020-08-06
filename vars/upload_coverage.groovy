@@ -2,6 +2,7 @@
 
 import groovy.json.*
 
+@NonCPS
 def call(String token, String language, String file) {
 	String url = "https://api.codacy.com/2.0/coverage"
 	//def commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
