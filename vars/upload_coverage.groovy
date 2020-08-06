@@ -12,12 +12,12 @@ def call(String token, String language, String file) {
 	url = url + "/" + commit + "/" + language
 
 	echo "The url is ${url}"
-	post = new URL(url).openConnection()
-	post.setRequestMethod("POST")
-	post.setRequestProperty("project_token", token)
-	post.setRequestProperty("Content-Type", "application/json")
+	post = new URL(url).openConnection();
+	// post.setRequestMethod("POST")
+	// post.setRequestProperty("project_token", token)
+	// post.setRequestProperty("Content-Type", "application/json")
 
 
-	post.getOutputStream().write(cover_file.getBytes("UTF-8"));
-	return post.getResponseCode();
+	// post.getOutputStream().write(cover_file.getBytes("UTF-8"));
+	// return post.getResponseCode();
 }
