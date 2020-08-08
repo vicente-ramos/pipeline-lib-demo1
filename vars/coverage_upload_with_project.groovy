@@ -3,7 +3,8 @@ import java.net.HttpURLConnection;
 import groovy.json.*
 
 def call(String projectName, String username , String language, String file) {
-	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
+	// def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
+	def commitUuid = '578659c'
 	// def commitUuid = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	// def commitUuid = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 	
@@ -32,6 +33,6 @@ def call(String projectName, String username , String language, String file) {
 	if(postRC.equals(200)) {
 		println(post.getInputStream().getText())
 	}
-	println(post.getInputStream().getText())
+	
 	return postRC
 }
