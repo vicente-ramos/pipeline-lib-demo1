@@ -12,8 +12,9 @@ def call(String projectName, String username , String language, String file) {
 	def coverage_path = actual_directory + '/' + file
 
 	String report = new File(coverage_path).getText('UTF-8')
+	report = report.replace("\n", "").replace("\r", "").replace("\t", "");
 	
-	def cover_file = JsonOutput.toJson(report.trim())
+	def cover_file = JsonOutput.toJson(report)
 	String url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}/coverage/${language}"
 	
 	println(url)
