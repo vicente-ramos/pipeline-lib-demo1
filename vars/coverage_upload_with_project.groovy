@@ -10,8 +10,9 @@ def call(String projectName, String username , String language, String file) {
 
 	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
 
-	println('File full path ${coverage_path}')
-	String new_file = new File(file).getText('UTF-8')
+	println('File full path ' + coverage_path)
+
+	String new_file = new File(coverage_path).getText('UTF-8')
 	
 	println('the file was found and read')
 	println(new_file)
