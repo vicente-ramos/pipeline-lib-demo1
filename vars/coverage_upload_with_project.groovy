@@ -11,6 +11,8 @@ def call(String projectName, String username , String language, String file) {
 	
 	// Get URL
 	String project_url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}"
+	println('El url del projecto ' + project_url)
+	
 	URL obj = new URL(project_url);
 	HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 	con.setRequestMethod("GET");
