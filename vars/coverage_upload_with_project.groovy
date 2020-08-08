@@ -11,8 +11,8 @@ def call(String projectName, String username , String language, String file) {
 	def cover_file = JsonOutput.toJson(file)
 	String url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}/coverage/${language}"
 	
-	echo url
 	println(url)
+	println(cover_file)
 
 	URL new_url = new URL(url)
 	HttpURLConnection post = (HttpURLConnection) new_url.openConnection();
@@ -21,14 +21,12 @@ def call(String projectName, String username , String language, String file) {
 	// post.setRequestProperty("project_token", token)
 	post.setRequestProperty("Content-Type", "application/json")
 
-	post.getOutputStream().write(cover_file.getBytes("UTF-8"));
+	post.getOutputStream().write(cover_file.getBytes("UTF-8"))
 	
-	def postRC = post.getResponseCode();
-	
-	println(503);
+	def postRC = post.getResponseCode()
 
 	if(postRC.equals(200)) {
-		println(post.getInputStream().getText());
+		println(post.getInputStream().getText())
 	}
 	return postRC
 }
