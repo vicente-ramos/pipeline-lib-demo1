@@ -7,12 +7,9 @@ def call(String token, String language, String file) {
 	def commit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	// def commit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 
-	echo "The commit is ${commit}"
-
 	def cover_file = JsonOutput.toJson(file)
 	url = url + "/" + commit + "/" + language
 
-	echo "The url is ${url}"
 	URL new_url = new URL(url)
 	HttpURLConnection post = (HttpURLConnection) new_url.openConnection();
 	// .openConnection();
