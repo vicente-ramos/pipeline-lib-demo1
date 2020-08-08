@@ -4,14 +4,14 @@ import groovy.json.*
 
 def call(String projectName, String username , String language, String file) {
 	// Get commitUuid
-	// def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
-	def commitUuid = '578659c'
+	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
+	// def commitUuid = '578659c'
 	// def commitUuid = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	// def commitUuid = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 	
 	// Get URL
-
-	URL obj = new URL("https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}");
+	String project_url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}"
+	URL obj = new URL(project_url);
 	HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 	con.setRequestMethod("GET");
 	int responseCode = con.getResponseCode();
