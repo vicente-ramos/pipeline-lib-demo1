@@ -5,7 +5,7 @@ import groovy.json.*
 def call(String projectName, String username , String language, String file) {
 	// def commitUuid = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	// def commitUuid = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-	def actual_directory = sh(returnStdout: true, script: "pwd")
+	def actual_directory = sh(returnStdout: true, script: "pwd").trim()
 	def coverage_path = actual_directory + '/' + file
 
 	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
