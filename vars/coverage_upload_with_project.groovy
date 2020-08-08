@@ -10,9 +10,9 @@ def call(String projectName, String username , String language, String file) {
 	def actual_directory = sh(returnStdout: true, script: "pwd").trim()
 	def coverage_path = actual_directory + '/' + file
 
-	String report = new File(coverage_path).getText('UTF-8').trim()
+	String report = new File(coverage_path).getText('UTF-8')
 	
-	def cover_file = JsonOutput.toJson(report)
+	def cover_file = JsonOutput.toJson(report.trim())
 	String url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}/coverage/${language}"
 	
 	println(url)
@@ -32,5 +32,6 @@ def call(String projectName, String username , String language, String file) {
 	if(postRC.equals(200)) {
 		println(post.getInputStream().getText())
 	}
+	println(post.getInputStream().getText())
 	return postRC
 }
