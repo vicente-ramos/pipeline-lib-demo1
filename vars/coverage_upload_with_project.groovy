@@ -3,21 +3,16 @@ import java.net.HttpURLConnection;
 import groovy.json.*
 
 def call(String projectName, String username , String language, String file) {
+	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
 	// def commitUuid = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 	// def commitUuid = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+	
 	def actual_directory = sh(returnStdout: true, script: "pwd").trim()
 	def coverage_path = actual_directory + '/' + file
 
-	def commitUuid = '578659cdd56e2dc511f13fde05b4969190cbaeb5'
-
-	println('File full path ' + coverage_path)
-
-	String new_file = new File(coverage_path).getText('UTF-8')
+	String report = new File(coverage_path).getText('UTF-8').trim()
 	
-	println('the file was found and read')
-	println(new_file)
-	
-	def cover_file = JsonOutput.toJson(new_file)
+	def cover_file = JsonOutput.toJson(report)
 	String url = "https://api.codacy.com/2.0/${username}/${projectName}/commit/${commitUuid}/coverage/${language}"
 	
 	println(url)
