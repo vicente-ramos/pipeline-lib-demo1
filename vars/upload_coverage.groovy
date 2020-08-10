@@ -12,7 +12,6 @@ def call(String token, String language, String file) {
 
 	URL new_url = new URL(url)
 	HttpURLConnection post = (HttpURLConnection) new_url.openConnection();
-	// .openConnection();
 	post.setRequestMethod("POST")
 	post.setDoOutput(true)
 	post.setRequestProperty("project_token", token)
