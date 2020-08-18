@@ -1,44 +1,54 @@
-## codacy_coverage_upload
+<h1>codacy_coverage_upload</h1>
 
-### Description
-Function used to upload coverage report to codacy.com
+<h3>Description</h3>
+<p>Function used to upload coverage report to codacy.com</p>
 
-This function can be used to upload coverage report to a project at docacy.com.
-The project will be identify by the token given to the function as parameter.
+<p>This function can be used to upload coverage report to a project at docacy.com.
+The project will be identify by the token given to the function as parameter.</p>
 
-### Parameters
+<h3>Parameters</h3>
 The function requires 3 parameters:
 
-1. language: String with the coverage language:
-    1. Java
-    2. Scala
-    3. Javascript
-    4. Python
-    5. PHP
-    6. Ruby
-    7. C#
-    8. Swift/Objective-C
-> Check https://github.com/codacy/codacy-coverage-reporter/blob/master/docs/index.md for
-a list of programing languages and coverage report format
+<ol>
+  <li>
+    <strong>language:</strong> String with the coverage language:
+    <ol>
+      <li>Java</li>
+      <li>Scala</li>
+      <li>Javascript</li>
+      <li>Python</li>
+      <li>PHP</li>
+      <li>Ruby</li>
+      <li>C#</li>
+      <li>Swift/Objective-C</li>
+    <ol>
+    <p>Check https://github.com/codacy/codacy-coverage-reporter/blob/master/docs/index.md for
+    a list of programing languages and coverage report format</p>
+  </li>
+  <li>
+    <strong>token:</strong> String with the token given by codacy.com to the project.
+    <p>Check https://docs.codacy.com/repositories-configure/coverage/
+    on how to get a project token</p>
+  </li>
+  <li>
+    <strong>file:</strong> String with the name of the coverage report (file name) relative to workspace
+  </li>
+</ol>
 
+<h3>Examples</h3>
+<h4>Example 1: Raw use</h4>
+<code>
+codacy_coverage_upload('python', 'asd3124sdqWERasewrAwSDW42', 'coverage.xml')
+<code>
 
-2. token: String with the token given by codacy.com to the project.
-> Check https://docs.codacy.com/repositories-configure/coverage/
-on how to get a project token
-
-3. file: String with the name of the coverage report (file name) relative to workspace
-
-### Example
-
-#### Example 1: Raw use
-`codacy_coverage_upload('python', 'asd3124sdqWERasewrAwSDW42', 'coverage.xml')`
-
-#### Example 2: With Jenkins credentials
-Codacy.com project Token can be saved as Jenkins secret text, then from the
-pipeline the credential can be used to pass the token as parameter to function:
-
+<h4>Example 2: With Jenkins credentials</h4>
+<p>Codacy.com project Token can be saved as Jenkins secret text, then from the
+pipeline the credential can be used to pass the token as parameter to function:</p>
+<code>
     withCredentials([
         string(credentialsId: 'codacy_project_token', variable: 'TOKEN')
         ]) {
             codacy_coverage_upload('python', '$TOKEN', 'coverage.xml')
         }
+<code>
+
