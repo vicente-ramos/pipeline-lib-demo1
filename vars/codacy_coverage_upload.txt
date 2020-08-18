@@ -21,14 +21,14 @@ The function requires 3 parameters:
       <li>Ruby</li>
       <li>C#</li>
       <li>Swift/Objective-C</li>
-    <ol>
-    <p>Check https://github.com/codacy/codacy-coverage-reporter/blob/master/docs/index.md for
-    a list of programing languages and coverage report format</p>
+    </ol>
+    <blockquote>Check <a href="https://github.com/codacy/codacy-coverage-reporter/blob/master/docs/index.md">Codacy coverage reporter</a> for
+    a list of programing languages and coverage report format.</blockquote>
   </li>
   <li>
     <strong>token:</strong> String with the token given by codacy.com to the project.
-    <p>Check https://docs.codacy.com/repositories-configure/coverage/
-    on how to get a project token</p>
+    <blockquote>Check <a href="https://docs.codacy.com/repositories-configure/coverage/">Codacy Coverage</a>
+    on how to get a project token</blockquote>
   </li>
   <li>
     <strong>file:</strong> String with the name of the coverage report (file name) relative to workspace
@@ -45,10 +45,9 @@ codacy_coverage_upload('python', 'asd3124sdqWERasewrAwSDW42', 'coverage.xml')
 <p>Codacy.com project Token can be saved as Jenkins secret text, then from the
 pipeline the credential can be used to pass the token as parameter to function:</p>
 <code>
-    withCredentials([
-        string(credentialsId: 'codacy_project_token', variable: 'TOKEN')
-        ]) {
-            codacy_coverage_upload('python', '$TOKEN', 'coverage.xml')
-        }
+withCredentials([<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string(credentialsId: 'codacy_project_token', variable: 'TOKEN')
+<br>&nbsp;&nbsp;&nbsp;&nbsp;]) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;codacy_coverage_upload('python', '$TOKEN', 'coverage.xml')
+<br>&nbsp;&nbsp;&nbsp;&nbsp;}
 <code>
-
